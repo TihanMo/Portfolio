@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -29,14 +33,29 @@ header ul {
 }
 header li {
     display: inline;
-    padding: 0 20px 0 20px;
+    padding: 0 20px;
 }
 .showcase {
+    position: relative;
     min-height: 400px;
-    background: #333;
+    background: url('./images/IMG_6502.JPEG') no-repeat center center/cover;
     color: #fff;
     text-align: center;
     padding-top: 100px;
+}
+.showcase::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.showcase .container {
+    position: relative;
+    z-index: 2;
 }
 .showcase h1 {
     font-size: 55px;
@@ -50,6 +69,7 @@ header li {
     padding: 20px;
     background: #fff;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .project h3 {
     margin-top: 0;
@@ -66,10 +86,24 @@ header li {
 .github-link {
     background-color: #333;
     color: #fff;
+    transition: background-color 0.3s;
+}
+.github-link i {
+    margin-right: 8px;
+}
+.github-link:hover {
+    background-color: #555;
 }
 .project-link {
     background-color: #77aaff;
     color: #333;
+    transition: background-color 0.3s;
+}
+.project-link i {
+    margin-right: 8px;
+}
+.project-link:hover {
+    background-color: #5599ee;
 }
 footer {
     background: #333;
@@ -77,4 +111,11 @@ footer {
     text-align: center;
     padding: 30px 0;
     margin-top: 30px;
+}
+footer a {
+    color: #77aaff;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #5599ee;
 }
