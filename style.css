@@ -35,6 +35,18 @@ header li {
     display: inline;
     padding: 0 20px;
 }
+.language-selector {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.language-selector select {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+}
 .showcase {
     position: relative;
     min-height: 400px;
