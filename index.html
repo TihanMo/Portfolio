@@ -1,85 +1,114 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tihan Morrol's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio von Tihan Morrol</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Aktualisierter Font Awesome Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Tihan Morrol</h1>
-            <ul>
-                <li><a href="#about" data-translate-key="about">Über mich</a></li>
-                <li><a href="#projects" data-translate-key="projects">Projekte</a></li>
-                <li><a href="#contact" data-translate-key="contact">Kontakt</a></li>
-            </ul>
-            <div class="language-selector">
-                <label for="language-select">Language:</label>
-                <select id="language-select">
-                    <option value="de">Deutsch</option>
-                    <option value="en">English</option>
-                </select>
-            </div>
-        </div>
-    </header>
+  <header>
+    <div class="container">
+      <h1>Tihan Morrol</h1>
+      <nav aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="#about" data-translate-key="about">Über mich</a></li>
+          <li><a href="#projects" data-translate-key="projects">Projekte</a></li>
+          <li><a href="#contact" data-translate-key="contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="language-selector">
+        <label for="language-select">Language:</label>
+        <select id="language-select">
+          <option value="de">Deutsch</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+  </header>
 
-    <section class="showcase" id="about">
-        <div class="container">
-            <h1 data-translate-key="welcome">Willkommen zu meinem Portfolio</h1>
-            <p data-translate-key="intro">Ich bin Tihan Morrol, ein IMS Schüler mit Leidenschaft für Softwareentwicklung. Hier finden Sie eine Auswahl meiner Projekte.</p>
-        </div>
-    </section>
+  <section class="showcase" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <h1 id="about-heading" class="terminal" data-translate-key="welcome"></h1>
+      <p class="terminal" data-translate-key="intro"></p>
+    </div>
+  </section>
 
-    <section class="container" id="projects">
-        <h2 data-translate-key="projects">Projekte</h2>
-        <div class="project">
-            <h3 data-translate-key="insurance_calculator_angular">Versicherungsrechner (Angular)</h3>
-            <p data-translate-key="insurance_calculator_angular_desc">Ein Versicherungsrechner, der mit Angular entwickelt wurde, um die Berechnung und Anzeige von Versicherungstarifen zu ermöglichen.</p>
-            <p><strong data-translate-key="technologies">Technologien:</strong> TypeScript, Angular, Figma</p>
-            <a class="github-link" href="https://github.com/TihanMo/Versicherungsrechner_Angular" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
-            <a class="project-link" href="https://versicherungsrechnerangular-2n76a54io-tihanmos-projects.vercel.app/" target="_blank" data-translate-key="view_project"><i class="fas fa-link"></i> Projekt ansehen</a>        </div>
-        <div class="project">
-            <h3 data-translate-key="tasks_api">Rest-API zu Tasks</h3>
-            <p data-translate-key="tasks_api_desc">Eine Rest-API zur Verwaltung von Aufgaben, entwickelt mit modernen Web-Technologien.</p>
-            <p><strong data-translate-key="technologies">Technologien:</strong> JavaScript, Nodejs, Express, Swagger</p>
-            <a class="github-link" href="https://github.com/TihanMo/Task_API" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
-        </div>
+  <!-- Filter- und Sortiersteuerung -->
+  <div class="container">
+    <div class="controls">
+      <div class="filter-buttons">
+        <button data-filter="all" data-translate-key="all" class="active"><i class="fas fa-th"></i> Alle</button>
+        <button data-filter="web-development" data-translate-key="web_development"><i class="fas fa-code"></i> Webentwicklung</button>
+        <button data-filter="api-development" data-translate-key="api_development"><i class="fas fa-server"></i> API-Entwicklung</button>
+        <button data-filter="design" data-translate-key="design"><i class="fas fa-paint-brush"></i> Design</button>
+      </div>
+      <div class="sort-dropdown">
+        <label for="sort-select" data-translate-key="sort_by"><i class="fas fa-sort"></i> Sortieren nach:</label>
+        <select id="sort-select">
+          <option value="newest" data-translate-key="newest_first">Neueste zuerst</option>
+          <option value="oldest" data-translate-key="oldest_first">Älteste zuerst</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
-        <div class="project">
-            <h3 data-translate-key="multimedia_website">Multimedia Website</h3>
-            <p data-translate-key="multimedia_website_desc">Eine Demo-Webseite, die mit dem React-Framework Next.js erstellt wurde, um dessen Funktionen zu demonstrieren.</p>
-            <p><strong data-translate-key="technologies">Technologien:</strong> TypeScript, React, Next.js, Vercel, Photoshop</p>
-            <a class="github-link" href="https://github.com/TihanMo/Multimedia_Website" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
-            <a class="project-link" href="https://multimedia-website-six.vercel.app/" target="_blank" data-translate-key="view_project"><i class="fas fa-link"></i> Projekt ansehen</a>        
-        </div>
+  <section class="container" id="projects">
+    <div class="project" data-category="web-development" data-date="2023-10-01">
+        <h3 data-translate-key="insurance_calculator_angular">Versicherungsrechner (Angular)</h3>
+        <p data-translate-key="insurance_calculator_angular_desc">Ein Versicherungsrechner, der mit Angular entwickelt wurde, um die Berechnung und Anzeige von Versicherungstarifen zu ermöglichen.</p>
+        <p><strong data-translate-key="technologies">Technologien:</strong> TypeScript, Angular, Figma</p>
+        <a class="github-link" href="https://github.com/TihanMo/Versicherungsrechner_Angular" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a class="project-link" href="https://versicherungsrechnerangular-2n76a54io-tihanmos-projects.vercel.app/" target="_blank" data-translate-key="view_project"><i class="fas fa-link"></i> Projekt ansehen</a>
+    </div>
 
-        <div class="project">
-            <h3 data-translate-key="insurance_calculator_react">Versicherungsrechner (React)</h3>
-            <p data-translate-key="insurance_calculator_react_desc">Ein Versicherungsrechner, der mit React erstellt wurde, um die verschiedenen Versicherungstarife zu berechnen.</p>
-            <a class="github-link" href="https://github.com/TihanMo/Versicherungsrechner_React" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
-        </div>
+    <div class="project" data-category="api-development" data-date="2023-09-15">
+        <h3 data-translate-key="tasks_api">Rest-API zu Tasks</h3>
+        <p data-translate-key="tasks_api_desc">Eine Rest-API zur Verwaltung von Aufgaben, entwickelt mit modernen Web-Technologien.</p>
+        <p><strong data-translate-key="technologies">Technologien:</strong> JavaScript, Node.js, Express, Swagger</p>
+        <a class="github-link" href="https://github.com/TihanMo/Task_API" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+    </div>
 
-        <div class="project">
-            <h3 data-translate-key="static_zoo_website">Statische Zoo Website</h3>
-            <p data-translate-key="static_zoo_website_desc">Eine einfache statische Website über einen Zoo, erstellt mit reinem HTML und CSS.</p>
-            <p><strong data-translate-key="technologies">Technologien:</strong> HTML, CSS, GitHub Pages</p>
-            <a class="github-link" href="https://github.com/TihanMo/Versicherungsrechner_Angular" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
-            <a class="project-link" href="https://tihanmo.github.io/My_little_Zoo_TM/" target="_blank" data-translate-key="view_project"><i class="fas fa-link"></i> Projekt ansehen</a>
-        </div>
-    </section>
+    <div class="project" data-category="web-development design" data-date="2023-08-20">
+        <h3 data-translate-key="multimedia_website">Multimedia Website</h3>
+        <p data-translate-key="multimedia_website_desc">Eine Demo-Webseite, die mit dem React-Framework Next.js erstellt wurde, um dessen Funktionen zu demonstrieren.</p>
+        <p><strong data-translate-key="technologies">Technologien:</strong> TypeScript, React, Next.js, Vercel, Photoshop</p>
+        <a class="github-link" href="https://github.com/TihanMo/Multimedia_Website" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a class="project-link" href="https://multimedia-website-six.vercel.app/" target="_blank" data-translate-key="view_project"><i class="fas fa-link"></i> Projekt ansehen</a>
+    </div>
 
-    <footer id="contact">
-        <div class="container">
-            <h2 data-translate-key="contact">Kontakt</h2>
-            <p data-translate-key="more_projects">Wenn Sie noch weitere Projekte von mir sehen möchten besuchen Sie:</p>
-            <p>GitHub: <a href="https://github.com/TihanMo" target="_blank">TihanMo</a></p>
-            <p data-translate-key="reach_out">Sie können mich per E-Mail erreichen:</p>
-            <p>E-Mail: <a href="mailto:morrol.tihan@gmail.com" target="_blank">morrol.tihan@gmail.com</a></p>
-        </div>
-    </footer>
-    <script src="script.js"></script>
+    <div class="project" data-category="web-development" data-date="2023-07-10">
+        <h3 data-translate-key="insurance_calculator_react">Versicherungsrechner (React)</h3>
+        <p data-translate-key="insurance_calculator_react_desc">Ein Versicherungsrechner, der mit React erstellt wurde, um die verschiedenen Versicherungstarife zu berechnen.</p>
+        <a class="github-link" href="https://github.com/TihanMo/Versicherungsrechner_React" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+    </div>
+
+    <div class="project" data-category="design" data-date="2023-06-05">
+        <h3 data-translate-key="static_zoo_website">Statische Zoo Website</h3>
+        <p data-translate-key="static_zoo_website_desc">Eine einfache statische Website über einen Zoo, erstellt mit reinem HTML und CSS.</p>
+        <p><strong data-translate-key="technologies">Technologien:</strong> HTML, CSS, GitHub Pages</p>
+        <a class="github-link" href="https://github.com/TihanMo/Versicherungsrechner_Angular" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+        <a class="project-link" href="https://tihanmo.github.io/My_little_Zoo_TM/" target="_blank" data-translate-key="view_project"><i class="fas fa-link"></i> Projekt ansehen</a>
+    </div>
+  </section>
+<!-- Es kommen bald weitere Projekte! -->
+
+  <footer id="contact">
+    <div class="container">
+      <h2 data-translate-key="contact">Kontakt</h2>
+      <p data-translate-key="more_projects">Wenn Sie noch weitere Projekte von mir sehen möchten besuchen Sie:</p>
+      <p>GitHub: <a href="https://github.com/TihanMo" target="_blank">TihanMo</a></p>
+      <p data-translate-key="reach_out">Sie können mich per E-Mail erreichen:</p>
+      <p>E-Mail: <a href="mailto:morrol.tihan@gmail.com" target="_blank">morrol.tihan@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="https://github.com/TihanMo" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/zhtihan/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/tihan-morrol-a7a496301/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
