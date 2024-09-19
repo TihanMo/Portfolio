@@ -1,4 +1,4 @@
-let translations = {}; // Globale Variable, um die Übersetzungen zu speichern
+let translations = {};
 let stopTyping;
 
 async function loadTranslations() {
@@ -89,13 +89,67 @@ function initializeTerminal() {
   introElement.textContent = introText;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
   loadTranslations();
+  initializeTerminal();
 
+  const themeSelect = document.getElementById('theme-select');
+  const languageSelect = document.getElementById('language-select');
   const sortSelect = document.getElementById('sort-select');
   const projectContainer = document.querySelector('#projects');
   let projectsArray = Array.from(document.querySelectorAll('.project'));
   let currentFilter = 'all';
+
+  const themes = {
+    default: {
+      '--primary-color': '#77aaff',
+      '--secondary-color': '#5599ee',
+      '--dark-color': '#333',
+      '--light-color': '#fff',
+      '--background-color': '#EEEEEE',
+    },
+    dark: {
+      '--primary-color': '#9F7AEA',
+      '--secondary-color': '#F6AD55',
+      '--dark-color': '#1A202C',
+      '--light-color': '#CBD5E0',
+      '--background-color': '#2D3748',
+    },
+    warm: {
+      '--primary-color': '#E09F3E',
+      '--secondary-color': '#D8572A',
+      '--dark-color': '#2B2D42',
+      '--light-color': '#FAF4E1',
+      '--background-color': '#FFD9C0',
+    },
+    cool: {
+      '--primary-color': '#00A6A6',
+      '--secondary-color': '#00B4D8',
+      '--dark-color': '#23395D',
+      '--light-color': '#EAF2F8',
+      '--background-color': '#CAF0F8',
+    },
+  };
+
+  function changeTheme(theme) {
+    const root = document.documentElement;
+    const selectedTheme = themes[theme];
+    for (const [key, value] of Object.entries(selectedTheme)) {
+      root.style.setProperty(key, value);
+    }
+  }
+
+  themeSelect.addEventListener('change', (event) => {
+    changeTheme(event.target.value);
+  });
+
+  changeTheme('default');
+
+  languageSelect.addEventListener('change', function () {
+    const selectedLanguage = languageSelect.value;
+    applyTranslations(selectedLanguage);
+    initializeTerminal();
+  });
 
   sortSelect.addEventListener('change', () => {
     sortAndDisplayProjects();
@@ -143,8 +197,4 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   filterProjects('all');
-
-  document.getElementById("language-select").addEventListener("change", function () {
-    initializeTerminal();
-  });
 });
