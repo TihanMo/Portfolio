@@ -1,16 +1,15 @@
 let translations = {}; // Globale Variable, um die Übersetzungen zu speichern
-let stopTyping; // Funktion zum Stoppen der Typanimation
+let stopTyping;
 
-// Funktion zum Laden der JSON-Datei
 async function loadTranslations() {
   try {
-    const response = await fetch('translations.json'); // Lade die JSON-Datei
+    const response = await fetch('translations.json');
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    translations = await response.json(); // Speichere die geladenen Übersetzungen
-    console.log("Translations loaded:", translations); // Debug-Ausgabe
-    initializeTerminal(); // Initialisiere das Terminal, nachdem die Übersetzungen geladen wurden
+    translations = await response.json();
+    console.log("Translations loaded:", translations);
+    initializeTerminal();
   } catch (error) {
     console.error('Fehler beim Laden der Übersetzungen:', error);
   }
@@ -21,23 +20,27 @@ function typeLetter(text, element) {
   let i = 0;
   let isTyping = true;
 
+  const cursor = document.createElement("span");
+  cursor.classList.add("cursor");
+  element.appendChild(cursor);
+
   function type() {
-    if (!isTyping) return; // Abbrechen, wenn isTyping auf false gesetzt wurde
+    if (!isTyping) return;
 
     if (i < text.length) {
-      element.innerHTML += text.charAt(i);
+      element.insertBefore(document.createTextNode(text.charAt(i)), cursor);
       i++;
-      setTimeout(type, 100); // Anpassung der Geschwindigkeit der Typing-Animation
+      setTimeout(type, 100);
+    } else {
+      cursor.classList.add("blink");
     }
   }
 
-  // Start der Typanimation
   type();
 
-  // Rückgabe einer Funktion, um die Typanimation zu stoppen
   return () => {
     isTyping = false;
-    element.innerHTML = ""; // Setze den Inhalt zurück, wenn die Animation gestoppt wird
+    cursor.remove();
   };
 }
 
@@ -66,6 +69,12 @@ function initializeTerminal() {
   applyTranslations(selectedLanguage);
 
   const terminalElement = document.querySelector('[data-translate-key="welcome"]');
+
+  if (!terminalElement) {
+    console.error("Terminal element not found");
+    return;
+  }
+
   const terminalText = translations[selectedLanguage]?.["welcome"] || "Welcome to my Portfolio";
 
   if (typeof stopTyping === 'function') {
@@ -81,7 +90,7 @@ function initializeTerminal() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  loadTranslations(); // Lade die Übersetzungen, wenn das Dokument geladen ist
+  loadTranslations();
 
   const sortSelect = document.getElementById('sort-select');
   const projectContainer = document.querySelector('#projects');
